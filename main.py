@@ -2849,15 +2849,15 @@ def split_content_into_batches(
 
     base_header = ""
     if format_type == "wework":
-        base_header = f"**总新闻数：** {total_titles}\n\n\n\n"
+        base_header = f"**【猪猪之家新闻】**\n\n【请小玛王查阅~】\n\n**总新闻数：** {total_titles}\n\n\n\n"
     elif format_type == "telegram":
-        base_header = f"总新闻数： {total_titles}\n\n"
+        base_header = f"【猪猪之家新闻】\n\n【请小玛王查阅~】\n\n总新闻数： {total_titles}\n\n"
     elif format_type == "ntfy":
-        base_header = f"**总新闻数：** {total_titles}\n\n"
+        base_header = f"**【猪猪之家新闻】**\n\n【请小玛王查阅~】\n\n**总新闻数：** {total_titles}\n\n"
     elif format_type == "feishu":
-        base_header = ""
+        base_header = "**【猪猪之家新闻】**\n\n【请小玛王查阅~】\n\n"
     elif format_type == "dingtalk":
-        base_header = f"**总新闻数：** {total_titles}\n\n"
+        base_header = f"**【猪猪之家新闻】**\n\n【请小玛王查阅~】\n\n**总新闻数：** {total_titles}\n\n"
         base_header += f"**时间：** {now.strftime('%Y-%m-%d %H:%M:%S')}\n\n"
         base_header += f"**类型：** 热点分析报告\n\n"
         base_header += "---\n\n"
@@ -3547,7 +3547,7 @@ def send_to_dingtalk(
         payload = {
             "msgtype": "markdown",
             "markdown": {
-                "title": f"TrendRadar 热点分析报告 - {report_type}",
+                "title": "【猪猪之家新闻】",
                 "text": batch_content,
             },
         }
@@ -3775,7 +3775,7 @@ def send_to_email(
 
         # 设置邮件主题
         now = get_beijing_time()
-        subject = f"TrendRadar 热点分析报告 - {report_type} - {now.strftime('%m月%d日 %H:%M')}"
+        subject = f"【猪猪之家新闻】 - {report_type} - {now.strftime('%m月%d日 %H:%M')}"
         msg["Subject"] = Header(subject, "utf-8")
 
         # 设置其他标准 header
@@ -3879,7 +3879,7 @@ def send_to_ntfy(
     headers = {
         "Content-Type": "text/plain; charset=utf-8",
         "Markdown": "yes",
-        "Title": report_type_en,
+        "Title": "【猪猪之家新闻】",
         "Priority": "default",
         "Tags": "news",
     }
